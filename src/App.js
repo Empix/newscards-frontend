@@ -1,5 +1,10 @@
+import React from 'react';
+import Routes from './routes';
+
+import './global.css';
+
 function App() {
-  return <h1>OK</h1>;
+  return <Routes />;
 }
 
 export default App;
