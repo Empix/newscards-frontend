@@ -1,0 +1,10 @@
+header {
+  width: 100%;
+  max-width: 980px;
+  padding: 10px 0;
+}
+
+header h1.title {
+  font-size: 1.8rem;
+  color: var(--primary);
+}
