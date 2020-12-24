@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 
 import Header from '../../components/Header';
+import Card from '../../components/Card';
 
 import './style.css';
 
+import api from '../../services/api';
+
 export default function Home() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    api
+      .get('newscards')
+      .then((response) => {
+        setData(response.data.reverse()); // TODO: Arrumar ordem no backend
+      })
+      .catch((error) => {
+        alert('Ocorreu um erro! ', error);
+      });
+  }, []);
+
   return (
     <div className="container">
       <Header />
@@ -21,36 +37,9 @@ export default function Home() {
       </div>
 
       <div className="news">
-        {(() => {
-          let cards = [];
-
-          for (let i = 0; i < 6; i++) {
-            cards[i] = (
-              <div className="card" key={i}>
-                <div className="header">
-                  <div className="title">
-                    'Cyberpunk 2077' é retirado da loja do PlayStation após
-                    críticas por defeitos e problemas
-                  </div>
-                </div>
-                <div className="content">
-                  <p>
-                    Sony promete reembolso integral para compradores de cópias
-                    digitais em seu sistema. Game, um dos mais esperados de
-                    2020, foi lançado para PlayStation 4 e outras plataformas no
-                    dia 10.
-                  </p>
-                  <span>
-                    <strong>Por:</strong> G1 (g1.globo.com)
-                  </span>
-                  <button className="button">IR PARA A NOTÍCIA</button>
-                </div>
-              </div>
-            );
-          }
-
-          return cards;
-        })()}
+        {data.map((card) => (
+          <Card key={card.id} data={card} />
+        ))}
       </div>
     </div>
   );
