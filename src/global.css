@@ -31,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 50px;
 }
 
 /* button */
@@ -47,4 +48,10 @@ body {
 
 .button:hover {
   opacity: 0.9;
+}
+
+@media (max-width: 530px) {
+  .container {
+    padding: 0 18px;
+  }
 }
