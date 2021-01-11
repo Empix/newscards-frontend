@@ -41,6 +41,12 @@ export default function Home() {
         {data.map((card) => (
           <Card key={card.id} data={card} />
         ))}
+
+        {data.length === 0 && (
+          <div className="not-found">
+            <h1>No news card was found!</h1>
+          </div>
+        )}
       </div>
 
       <Footer />
