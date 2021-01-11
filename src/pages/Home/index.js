@@ -19,7 +19,7 @@ export default function Home() {
         setData(response.data.reverse()); // TODO: Arrumar ordem no backend
       })
       .catch((error) => {
-        alert('Ocorreu um erro! ', error);
+        alert('An unknown error has occurred!');
       });
   }, []);
 
