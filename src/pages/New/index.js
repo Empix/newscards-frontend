@@ -7,10 +7,18 @@ import Footer from '../../components/Footer';
 
 import './style.css';
 
+import api from '../../services/api';
+
 export default function New() {
   const history = useHistory();
-  const [imageFile, setImageFile] = useState();
-  const [imagePreview, setImagePreview] = useState();
+
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [link, setLink] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
 
   function handleImageInputChange(event) {
     const file = event.target.files[0];
@@ -35,6 +43,27 @@ export default function New() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    if (!imageFile) {
+      return alert('Please choose an image!');
+    }
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('author', author);
+    formData.append('url', link);
+    formData.append('description', description);
+    formData.append('image', imageFile);
+
+    api
+      .post('newscards', formData)
+      .then((response) => {
+        alert('News card successfully created!');
+        history.push('/');
+      })
+      .catch((error) => {
+        alert('An unknown error has occurred!');
+      });
   }
 
   return (
@@ -61,7 +90,6 @@ export default function New() {
             </p>
           </label>
           <input
-            required
             type="file"
             name="image"
             id="image"
@@ -69,13 +97,36 @@ export default function New() {
             accept="image/jpeg, image/pjpeg, image/png"
           />
 
-          <input required type="text" placeholder="Title" name="title" />
-          <input required type="text" placeholder="Author" name="author" />
-          <input required type="url" placeholder="Link" name="link" />
+          <input
+            required
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={title}
+            onChange={({ target }) => setTitle(target.value)}
+          />
+          <input
+            required
+            type="text"
+            placeholder="Author"
+            name="author"
+            value={author}
+            onChange={({ target }) => setAuthor(target.value)}
+          />
+          <input
+            required
+            type="url"
+            placeholder="Link"
+            name="link"
+            value={link}
+            onChange={({ target }) => setLink(target.value)}
+          />
           <textarea
             required
             placeholder="Description"
             name="description"
+            value={description}
+            onChange={({ target }) => setDescription(target.value)}
           ></textarea>
 
           <button type="submit" className="button">
