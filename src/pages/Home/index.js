@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { IoMdSearch } from 'react-icons/io';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -31,12 +30,7 @@ export default function Home() {
       <Header />
 
       <div className="tool-bar">
-        <div className="input-search">
-          <input type="text" placeholder="Search" />
-          <button className="input-search-icon">
-            <IoMdSearch />
-          </button>
-        </div>
+        <input type="text" placeholder="Search" />
         <button className="button" onClick={() => history.push('/new')}>
           NEW
         </button>
