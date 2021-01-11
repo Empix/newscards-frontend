@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { IoMdSearch } from 'react-icons/io';
 
 import Header from '../../components/Header';
@@ -23,6 +24,8 @@ export default function Home() {
       });
   }, []);
 
+  const history = useHistory();
+
   return (
     <div className="container">
       <Header />
@@ -34,7 +37,9 @@ export default function Home() {
             <IoMdSearch />
           </button>
         </div>
-        <button className="button">NEW</button>
+        <button className="button" onClick={() => history.push('/new')}>
+          NEW
+        </button>
       </div>
 
       <div className="news">
