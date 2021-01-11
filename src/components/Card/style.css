@@ -7,7 +7,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   margin: 0 auto;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .card .header .title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   background-color: #33333366;
   color: var(--primary);
   padding: 8px;
@@ -38,7 +38,7 @@
 }
 
 .card .content p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   flex-grow: 1;
   overflow: hidden;
