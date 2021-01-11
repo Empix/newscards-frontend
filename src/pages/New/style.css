@@ -1,0 +1,113 @@
+/* Toolbar */
+.bar {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.bar .back-to-home {
+  color: var(--primary);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bar .back-to-home:hover {
+  color: var(--primary-hover);
+}
+
+.bar .back-to-home svg {
+  margin-right: 10px;
+}
+
+/* Form */
+.form-container {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container form {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.form-container form input[type='text'],
+.form-container form input[type='url'],
+.form-container form textarea {
+  color: var(--primary);
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border: 2px solid var(--primary);
+  background-color: transparent;
+  border-radius: 5px;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-container form textarea {
+  resize: vertical;
+  height: 125px;
+}
+
+::placeholder {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.form-container form .button {
+  width: 100%;
+  padding: 10px;
+}
+
+.form-container form input[type='file'] {
+  display: none;
+}
+
+.form-container form .image-label {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 250px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 2rem;
+  text-align: center;
+  transition-duration: 0.2s;
+}
+
+.form-container form .image-label:hover {
+  background-color: var(--primary-hover);
+}
+
+.form-container form .image-label p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--primary-opacity);
+  border-radius: 5px;
+  padding: 8px;
+  transition-duration: 0.2s;
+}
+
+.form-container form .image-label:hover > p {
+  background-color: var(--primary-hover-opacity);
+}
