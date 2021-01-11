@@ -9,26 +9,29 @@ import './style.css';
 
 export default function New() {
   const history = useHistory();
-  const [imageObjectURL, setImageObjectURL] = useState('');
+  const [imageFile, setImageFile] = useState();
+  const [imagePreview, setImagePreview] = useState();
 
   function handleImageInputChange(event) {
     const file = event.target.files[0];
+
+    if (!file) return;
 
     if (file.size > 2 * 1024 * 1024) {
       return alert('Too big file!');
     }
 
-    const objectURL = URL.createObjectURL(file);
-    setImageObjectURL(objectURL);
-
-    console.log(imageObjectURL);
+    setImageFile(file);
   }
 
   useEffect(() => {
-    setInterval(() => {
-      URL.revokeObjectURL(imageObjectURL);
-    }, 1000);
-  }, [imageObjectURL]);
+    if (!imageFile) return;
+
+    const objectURL = URL.createObjectURL(imageFile);
+    setImagePreview(objectURL);
+
+    return () => URL.revokeObjectURL(objectURL);
+  }, [imageFile]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -50,7 +53,7 @@ export default function New() {
           <label
             className="image-label"
             htmlFor="image"
-            style={{ backgroundImage: `url(${imageObjectURL})` }}
+            style={{ backgroundImage: `url(${imagePreview})` }}
           >
             <p>
               <IoMdImage />
