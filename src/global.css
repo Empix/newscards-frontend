@@ -6,6 +6,8 @@
   --background: #111111;
   --primary: #fefdfc;
   --primary-hover: #eeedec;
+  --primary-opacity: rgba(254, 253, 252, 0.6);
+  --primary-hover-opacity: rgba(238, 237, 236, 0.6);
 }
 
 /* Reset */
