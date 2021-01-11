@@ -1,0 +1,20 @@
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+footer p {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+footer a {
+  color: var(--primary);
+}
+
+footer a:hover {
+  color: var(--primary-hover);
+}
