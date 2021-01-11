@@ -70,6 +70,7 @@
 .form-container form .button {
   width: 100%;
   padding: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-container form input[type='file'] {
