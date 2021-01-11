@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import Card from '../../components/Card';
 
 import './style.css';
@@ -41,6 +42,8 @@ export default function Home() {
           <Card key={card.id} data={card} />
         ))}
       </div>
+
+      <Footer />
     </div>
   );
 }
