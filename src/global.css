@@ -5,6 +5,7 @@
 :root {
   --background: #111111;
   --primary: #fefdfc;
+  --primary-hover: #eeedec;
 }
 
 /* Reset */
