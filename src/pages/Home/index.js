@@ -16,7 +16,7 @@ export default function Home() {
     api
       .get('newscards')
       .then((response) => {
-        setData(response.data.reverse()); // TODO: Arrumar ordem no backend
+        setData(response.data);
       })
       .catch((error) => {
         alert('An unknown error has occurred!');
