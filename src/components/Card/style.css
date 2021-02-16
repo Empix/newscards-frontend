@@ -9,6 +9,7 @@
   flex-direction: column;
   transition-duration: 0.5s;
   margin: 0 auto;
+  position: relative;
 }
 
 .card .header {
@@ -60,4 +61,43 @@
   color: var(--primary);
   text-align: center;
   text-decoration: none;
+}
+
+/* Options */
+.card:hover > .options {
+  opacity: 1;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--primary);
+  z-index: 10;
+  padding: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.options svg {
+  width: 24px;
+  height: 24px;
+}
+
+.options div {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.options div:first-child {
+  margin-right: 10px;
+}
+
+.options div:hover {
+  border: 2px solid var(--primary);
 }

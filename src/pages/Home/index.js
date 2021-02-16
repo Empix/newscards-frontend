@@ -25,6 +25,11 @@ export default function Home() {
 
   const history = useHistory();
 
+  function removeCard(id) {
+    const newData = data.filter((card) => card.id !== id);
+    setData(newData);
+  }
+
   return (
     <div className="container">
       <Header />
@@ -38,7 +43,7 @@ export default function Home() {
 
       <div className="news">
         {data.map((card) => (
-          <Card key={card.id} data={card} />
+          <Card key={card.id} data={card} onDelete={removeCard} />
         ))}
 
         {data.length === 0 && (

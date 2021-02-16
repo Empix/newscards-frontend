@@ -1,18 +1,38 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { IoMdTrash, IoMdCreate } from 'react-icons/io';
 
 import { usePalette } from 'react-palette';
 
 import './style.css';
 
-export default function Card({ data }) {
-  const { data: palette, error } = usePalette(encodeURI(data.image_url));
+import api from '../../services/api';
 
-  if (error) {
-    console.log(error);
+export default function Card({ data, onDelete }) {
+  const { data: palette } = usePalette(encodeURI(data.image_url));
+  const history = useHistory();
+
+  function handleDelete(id) {
+    api
+      .delete(`newscards/${id}`)
+      .then(() => {
+        onDelete(id);
+      })
+      .catch((error) => {
+        alert('An error occurred while trying to delete the card!');
+      });
   }
 
   return (
     <div className="card" style={{ backgroundColor: palette.vibrant }}>
+      <div className="options">
+        <div className="edit" onClick={() => history.push(`/edit/${data.id}`)}>
+          <IoMdCreate />
+        </div>
+        <div className="delete" onClick={() => handleDelete(data.id)}>
+          <IoMdTrash />
+        </div>
+      </div>
       <div
         className="header"
         style={{ backgroundImage: `url(${encodeURI(data.image_url)})` }}
