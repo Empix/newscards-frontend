@@ -4,6 +4,7 @@
 /* Variables */
 :root {
   --background: #111111;
+  --background-secondary: #333333;
   --primary: #fefdfc;
   --primary-hover: #eeedec;
   --primary-opacity: rgba(254, 253, 252, 0.6);
@@ -17,6 +18,7 @@
   box-sizing: border-box;
   outline: none;
   font-family: 'Roboto', sans-serif;
+  border: 0;
 }
 
 body {
