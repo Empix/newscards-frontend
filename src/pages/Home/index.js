@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
-import { IoMdSearch } from 'react-icons/io';
+import { IoSearch, IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -11,15 +12,19 @@ import './style.css';
 
 import api from '../../services/api';
 
-export default function Home() {
+export default function Home(props) {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     api
       .get('newscards')
-      .then((response) => {
-        setData(response.data);
+      .then(({ data }) => {
+        setData(data.data);
+        setCurrentPage(data.currentPage);
+        setTotalPages(data.totalPages);
       })
       .catch((error) => {
         alert('An unknown error has occurred!');
@@ -38,8 +43,23 @@ export default function Home() {
 
     api
       .get('newscards', { params: { search } })
-      .then((response) => {
-        setData(response.data);
+      .then(({ data }) => {
+        setData(data.data);
+        setCurrentPage(data.currentPage);
+        setTotalPages(data.totalPages);
+      })
+      .catch((error) => {
+        alert('An unknown error has occurred!');
+      });
+  }
+
+  function handleChangePage({ selected }) {
+    api
+      .get('newscards', { params: { page: selected + 1 } })
+      .then(({ data }) => {
+        setData(data.data);
+        setCurrentPage(data.currentPage);
+        setTotalPages(data.totalPages);
       })
       .catch((error) => {
         alert('An unknown error has occurred!');
@@ -59,7 +79,7 @@ export default function Home() {
             onChange={({ target }) => setSearch(target.value)}
           />
           <button type="submit" className="button">
-            <IoMdSearch />
+            <IoSearch />
           </button>
         </form>
 
@@ -79,6 +99,22 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {data.length !== 0 && (
+        <div className="pagination">
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={5}
+            forcePage={currentPage - 1}
+            marginPagesDisplayed={1}
+            previousLabel={<IoChevronBack size={20} />}
+            nextLabel={<IoChevronForward size={20} />}
+            activeLinkClassName="current-page"
+            onPageChange={handleChangePage}
+            disableInitialCallback={true}
+          />
+        </div>
+      )}
 
       <Footer />
     </div>

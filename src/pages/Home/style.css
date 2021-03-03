@@ -65,6 +65,43 @@
   align-items: center;
 }
 
+/* Pagination */
+.pagination {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pagination ul a {
+  font-size: 2em;
+  min-width: 30px;
+  padding: 0 5px;
+  height: 30px;
+  color: var(--primary);
+  background-color: var(--background-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination .current-page {
+  background-color: var(--primary);
+  color: var(--background-secondary);
+}
+
 @media (max-width: 530px) {
   .tool-bar {
     width: 100%;
