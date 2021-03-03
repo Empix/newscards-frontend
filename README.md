@@ -1,6 +1,7 @@
 # NewsCards-frontend
 
 ![Home Screenshot](./images/home_screenshot.png)
+![New Screenshot](./images/new_screenshot.png)
 
 ### Techs
 
